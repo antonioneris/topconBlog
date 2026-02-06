@@ -65,6 +65,7 @@ namespace TopconBlog.Infrastructure.Dados
                 entity.Property(p => p.AutorId).HasColumnName("autor_id");
                 entity.Property(p => p.DataCriacao).HasColumnName("data_criacao");
                 entity.Property(p => p.DataAtualizacao).HasColumnName("data_atualizacao");
+                entity.Property(p => p.ImagemCapaUrl).HasColumnName("imagem_capa_url").HasMaxLength(500);
                 
                 // Relacionamento com Usuario (Autor)
                 entity.HasOne(p => p.Autor)

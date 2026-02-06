@@ -94,6 +94,7 @@ export interface PostagemDto {
   id: number;
   titulo: string;
   conteudo: string;
+  imagemCapaUrl?: string;
   autorId: number;
   autorNome: string;
   dataCriacao: string;
@@ -103,6 +104,7 @@ export interface PostagemDto {
 export interface CriarPostagemDto {
   titulo: string;
   conteudo: string;
+  imagemCapaUrl?: string;
 }
 
 export interface PostagensPaginadas {
@@ -138,6 +140,30 @@ export const postagemServico = {
 
   remover: async (id: number): Promise<void> => {
     await api.delete(`/postagens/${id}`);
+  },
+};
+
+// =============================================================================
+// Serviço de Upload de Imagens
+// =============================================================================
+
+export interface ImagemUploadResult {
+  sucesso: boolean;
+  mensagem?: string;
+  url?: string;
+  nomeArquivo?: string;
+}
+
+export const imagemServico = {
+  upload: async (arquivo: File): Promise<ImagemUploadResult> => {
+    const formData = new FormData();
+    formData.append('arquivo', arquivo);
+    const response = await api.post<ImagemUploadResult>('/imagens/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
   },
 };
 

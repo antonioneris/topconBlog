@@ -97,27 +97,15 @@ export default function PaginaUsuarios() {
         setIdExclusao(id);
     };
 
-     const confirmarExclusao = async () => {
-            if (idExclusao === null) return;
-            try {
-                await usuarioServico.remover(idExclusao);
-                setUsuarios(usuarios.filter(u => u.id !== idExclusao));
-            } catch {
-                setErro('Erro ao excluir usuário');
-            } finally {
-                setIdExclusao(null);
-            }
-        };
-
-    const excluirUsuarioConfirm = async (id: number) => {
-        if (!confirm('Tem certeza que deseja excluir este usuário?')) return;
-
+    const confirmarExclusao = async () => {
+        if (idExclusao === null) return;
         try {
-            await usuarioServico.remover(id);
-            setUsuarios(usuarios.filter(u => u.id !== id));
-            setSucesso('Usuário excluído com sucesso!');
+            await usuarioServico.remover(idExclusao);
+            setUsuarios(usuarios.filter(u => u.id !== idExclusao));
         } catch {
             setErro('Erro ao excluir usuário');
+        } finally {
+            setIdExclusao(null);
         }
     };
 
@@ -242,7 +230,7 @@ export default function PaginaUsuarios() {
                                                         onClick={() => excluirUsuario(usuario.id)}
                                                     >
                                                         <i className="bi bi-x-lg"></i>
-                                                        
+
                                                     </Button>
                                                 </div>
                                             </div>
@@ -355,7 +343,7 @@ export default function PaginaUsuarios() {
                 titulo="Confirmar exclusão"
                 variante="danger"
                 textoConfirmar="Excluir" >
-                    Tem certeza que deseja excluir esta Usuario?
+                Tem certeza que deseja excluir esta Usuario?
             </ModalConfirmacao>
         </div>
     );

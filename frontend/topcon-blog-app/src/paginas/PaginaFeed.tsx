@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Button, Form, Spinner, Alert, Modal } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Form, Spinner, Alert, Modal, Image } from 'react-bootstrap';
 import { useAutenticacao } from '../contextos/AutenticacaoContexto';
 import { postagemServico } from '../servicos/api';
 import type { PostagemDto, CriarPostagemDto } from '../servicos/api';
 import { ModalConfirmacao } from '../componentes/ModalConfirmacao';
+import EditorHtml from '../componentes/EditorHtml';
+import DropzoneImagem from '../componentes/DropzoneImagem';
+import DOMPurify from 'dompurify';
 
 export default function PaginaFeed() {
     const [postagens, setPostagens] = useState<PostagemDto[]>([]);
@@ -14,11 +17,13 @@ export default function PaginaFeed() {
 
     const [novoTitulo, setNovoTitulo] = useState('');
     const [novoConteudo, setNovoConteudo] = useState('');
+    const [novaImagemCapa, setNovaImagemCapa] = useState<string | null>(null);
     const [enviando, setEnviando] = useState(false);
 
     const [postagemEditando, setPostagemEditando] = useState<PostagemDto | null>(null);
     const [tituloEdicao, setTituloEdicao] = useState('');
     const [conteudoEdicao, setConteudoEdicao] = useState('');
+    const [imagemCapaEdicao, setImagemCapaEdicao] = useState<string | null>(null);
     const [idExclusao, setIdExclusao] = useState<number | null>(null);
 
     const { usuario } = useAutenticacao();
@@ -62,11 +67,13 @@ export default function PaginaFeed() {
             const novaPostagem: CriarPostagemDto = {
                 titulo: novoTitulo,
                 conteudo: novoConteudo,
+                imagemCapaUrl: novaImagemCapa || undefined,
             };
             const postagem = await postagemServico.criar(novaPostagem);
             setPostagens([postagem, ...postagens]);
             setNovoTitulo('');
             setNovoConteudo('');
+            setNovaImagemCapa(null);
         } catch {
             setErro('Erro ao criar postagem');
         } finally {
@@ -78,6 +85,7 @@ export default function PaginaFeed() {
         setPostagemEditando(postagem);
         setTituloEdicao(postagem.titulo);
         setConteudoEdicao(postagem.conteudo);
+        setImagemCapaEdicao(postagem.imagemCapaUrl || null);
     };
 
     const salvarEdicao = async () => {
@@ -87,6 +95,7 @@ export default function PaginaFeed() {
             const atualizada = await postagemServico.atualizar(postagemEditando.id, {
                 titulo: tituloEdicao,
                 conteudo: conteudoEdicao,
+                imagemCapaUrl: imagemCapaEdicao || undefined,
             });
             setPostagens(postagens.map(p => p.id === atualizada.id ? atualizada : p));
             setPostagemEditando(null);
@@ -122,6 +131,10 @@ export default function PaginaFeed() {
         });
     };
 
+    const renderizarHtml = (html: string) => {
+        return { __html: DOMPurify.sanitize(html) };
+    };
+
     return (
         <div style={{ backgroundColor: '#f5f7fa', minHeight: 'calc(100vh - 56px)' }}>
             <Container fluid className="px-2 px-sm-3 px-md-4 px-lg-5 py-3 py-md-4">
@@ -142,16 +155,22 @@ export default function PaginaFeed() {
                                             size="lg"
                                         />
                                     </Form.Group>
+
+                                    <DropzoneImagem
+                                        imagemUrl={novaImagemCapa}
+                                        onImagemChange={setNovaImagemCapa}
+                                    />
+
                                     <Form.Group className="mb-3">
-                                        <Form.Control
-                                            as="textarea"
-                                            rows={3}
-                                            placeholder="O que você está pensando?"
+                                        <label className="form-label fw-semibold">Conteúdo</label>
+                                        <EditorHtml
                                             value={novoConteudo}
-                                            onChange={(e) => setNovoConteudo(e.target.value)}
-                                            required
+                                            onChange={setNovoConteudo}
+                                            height={250}
+                                            placeholder="Escreva o conteúdo da sua postagem..."
                                         />
                                     </Form.Group>
+
                                     <div className="d-flex justify-content-end">
                                         <Button
                                             type="submit"
@@ -185,6 +204,16 @@ export default function PaginaFeed() {
                             <>
                                 {postagens.map((postagem) => (
                                     <Card key={postagem.id} className="mb-3 shadow-sm border-0">
+                                        {/* Imagem de capa */}
+                                        {postagem.imagemCapaUrl && (
+                                            <Image
+                                                src={`http://localhost:8080${postagem.imagemCapaUrl}`}
+                                                alt="Imagem de capa"
+                                                fluid
+                                                className="rounded-top"
+                                                style={{ maxHeight: '300px', width: '100%', objectFit: 'cover' }}
+                                            />
+                                        )}
                                         <Card.Body className="p-3 p-md-4">
                                             {/* Header da postagem */}
                                             <div className="d-flex justify-content-between align-items-start gap-2 mb-2 flex-wrap">
@@ -201,14 +230,12 @@ export default function PaginaFeed() {
                                                     <div className="d-flex gap-2 flex-shrink-0">
                                                         <Button
                                                             variant="primary"
-                                                            //size="sm"
                                                             onClick={() => abrirEdicao(postagem)}
                                                         >
                                                             <i className="bi bi-pencil-square"></i>
                                                         </Button>
                                                         <Button
                                                             variant="danger"
-                                                            //size="sm"
                                                             onClick={() => excluirPostagem(postagem.id)}
                                                         >
                                                             <i className="bi bi-x-lg"></i>
@@ -217,10 +244,11 @@ export default function PaginaFeed() {
                                                 )}
                                             </div>
 
-                                            {/* Conteúdo */}
-                                            <Card.Text className="mt-3" style={{ whiteSpace: 'pre-wrap' }}>
-                                                {postagem.conteudo}
-                                            </Card.Text>
+                                            {/* Conteúdo HTML renderizado */}
+                                            <div
+                                                className="mt-3 post-content"
+                                                dangerouslySetInnerHTML={renderizarHtml(postagem.conteudo)}
+                                            />
                                         </Card.Body>
                                     </Card>
                                 ))}
@@ -243,6 +271,7 @@ export default function PaginaFeed() {
                 show={!!postagemEditando}
                 onHide={() => setPostagemEditando(null)}
                 centered
+                size="lg"
                 fullscreen="sm-down"
             >
                 <Modal.Header closeButton>
@@ -258,13 +287,18 @@ export default function PaginaFeed() {
                             size="lg"
                         />
                     </Form.Group>
+
+                    <DropzoneImagem
+                        imagemUrl={imagemCapaEdicao}
+                        onImagemChange={setImagemCapaEdicao}
+                    />
+
                     <Form.Group>
                         <Form.Label className="fw-semibold">Conteúdo</Form.Label>
-                        <Form.Control
-                            as="textarea"
-                            rows={5}
+                        <EditorHtml
                             value={conteudoEdicao}
-                            onChange={(e) => setConteudoEdicao(e.target.value)}
+                            onChange={setConteudoEdicao}
+                            height={300}
                         />
                     </Form.Group>
                 </Modal.Body>

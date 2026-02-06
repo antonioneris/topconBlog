@@ -1,8 +1,3 @@
-// =============================================================================
-// Controller de Postagens - CRUD de posts do blog
-// Projeto: TopconBlog.API
-// =============================================================================
-
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

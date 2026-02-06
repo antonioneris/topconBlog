@@ -25,6 +25,9 @@ FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
+# Criar pasta para uploads
+RUN mkdir -p wwwroot/uploads
+
 # Variáveis de ambiente
 ENV ASPNETCORE_URLS=http://+:5000
 ENV ASPNETCORE_ENVIRONMENT=Development

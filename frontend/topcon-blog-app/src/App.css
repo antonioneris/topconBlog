@@ -255,3 +255,61 @@ h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1a1;
 }
+
+/* POST CONTENT */
+.post-content {
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-content p {
+  margin-bottom: 0.75rem;
+}
+
+.post-content ul,
+.post-content ol {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+}
+
+.post-content a {
+  color: #0d6efd;
+}
+
+.post-content blockquote {
+  border-left: 4px solid #0d6efd;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* DROPZONE */
+.border-dashed {
+  border-style: dashed !important;
+}
+
+/* TINYMCE */
+.tox-tinymce {
+  border-radius: 8px !important;
+  border: 1.5px solid #ced4da !important;
+}
+
+.tox-tinymce:focus-within {
+  border-color: #0d6efd !important;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}

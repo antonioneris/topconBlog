@@ -39,6 +39,7 @@ namespace TopconBlog.Application.Servicos
             {
                 Titulo = dto.Titulo,
                 Conteudo = dto.Conteudo,
+                ImagemCapaUrl = dto.ImagemCapaUrl,
                 AutorId = autorId,
                 DataCriacao = DateTime.UtcNow
             };
@@ -67,6 +68,9 @@ namespace TopconBlog.Application.Servicos
             
             if (!string.IsNullOrWhiteSpace(dto.Conteudo))
                 postagem.Conteudo = dto.Conteudo;
+            
+            if (dto.ImagemCapaUrl != null)
+                postagem.ImagemCapaUrl = dto.ImagemCapaUrl;
             
             postagem.DataAtualizacao = DateTime.UtcNow;
             
@@ -103,6 +107,7 @@ namespace TopconBlog.Application.Servicos
                 Id = postagem.Id,
                 Titulo = postagem.Titulo,
                 Conteudo = postagem.Conteudo,
+                ImagemCapaUrl = postagem.ImagemCapaUrl,
                 AutorId = postagem.AutorId,
                 AutorNome = postagem.Autor?.Nome,
                 DataCriacao = postagem.DataCriacao,
