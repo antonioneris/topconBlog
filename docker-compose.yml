@@ -1,0 +1,61 @@
+services: 
+  database:
+    image: postgres:15-alpine
+    container_name: topcon-blog-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: topconblog
+      POSTGRES_USER: topcon
+      POSTGRES_PASSWORD: topcon@2024
+    # ports:
+    #   - "5432:5432"
+    volumes:
+      - postgres-dados:/var/lib/postgresql/data
+    networks:
+      - topcon-rede
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U topcon -d topconblog"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: topcon-blog-api
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:5000
+      # ConnectionStrings__DefaultConnection: "Host=database;Port=5432;Database=topconblog;Username=topcon;Password=topcon@2024"
+      # JWT__SecretKey: "TesteVagadeEmprego2026!@#123@@#######"
+      # JWT__Issuer: "TopconBlogAPI"
+      # JWT__Audience: "TopconBlogApp"
+    ports:
+      - "8080:5000"
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - topcon-rede
+
+  frontend:
+    build:
+      context: ./frontend/topcon-blog-app
+      dockerfile: Dockerfile
+    container_name: topcon-blog-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    networks:
+      - topcon-rede
+
+networks:
+  topcon-rede:
+    driver: bridge
+
+volumes:
+  postgres-dados:

@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="TopconBlog.API/TopconBlog.API.csproj" />
+  <Project Path="TopconBlog.Application/TopconBlog.Application.csproj" />
+  <Project Path="TopconBlog.Domain/TopconBlog.Domain.csproj" />
+  <Project Path="TopconBlog.Infrastructure/TopconBlog.Infrastructure.csproj" />
+</Solution>
