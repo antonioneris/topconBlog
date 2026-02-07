@@ -3,6 +3,7 @@ import Modal from './Modal';
 import DOMPurify from 'dompurify';
 import type { PostagemDto } from '../servicos/api';
 import { useAutenticacao } from '../contextos/AutenticacaoContexto';
+import { getAssetUrl } from '../config/env';
 
 interface ModalVisualizacaoPostagemProps {
     show: boolean;
@@ -87,7 +88,7 @@ export default function ModalVisualizacaoPostagem({
             {postagem.imagemCapaUrl && (
                 <div className="mb-4 mx-n3 mt-n3">
                     <Image
-                        src={`http://localhost:8080${postagem.imagemCapaUrl}`}
+                        src={getAssetUrl(postagem.imagemCapaUrl)}
                         alt="Imagem de capa"
                         fluid
                         className="w-100"

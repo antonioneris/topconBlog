@@ -1,8 +1,9 @@
 import axios from 'axios';
+import { config } from '../config/env';
 
 // Criação da instância do Axios com configurações base
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: config.API_URL,
   headers: {
     'Content-Type': 'application/json',
   },

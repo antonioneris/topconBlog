@@ -9,6 +9,7 @@ import Modal from '../componentes/Modal';
 import EditorHtml from '../componentes/EditorHtml';
 import DropzoneImagem from '../componentes/DropzoneImagem';
 import DOMPurify from 'dompurify';
+import { getAssetUrl } from '../config/env';
 
 interface PaginaFeedProps {
     onRegistrarCallback?: (fn: (postagem: PostagemDto) => void) => void;
@@ -180,7 +181,7 @@ export default function PaginaFeed({ onRegistrarCallback }: PaginaFeedProps) {
                                         {/* Imagem de capa (thumbnail) */}
                                         {postagem.imagemCapaUrl && (
                                             <Image
-                                                src={`http://localhost:8080${postagem.imagemCapaUrl}`}
+                                                src={getAssetUrl(postagem.imagemCapaUrl)}
                                                 alt="Imagem de capa"
                                                 fluid
                                                 className="rounded-top"

@@ -1,5 +1,6 @@
 import { Editor } from '@tinymce/tinymce-react';
 import { useRef } from 'react';
+import { config } from '../config/env';
 
 interface EditorHtmlProps {
     value: string;
@@ -16,7 +17,7 @@ export default function EditorHtml({ value, onChange, height = 300, placeholder 
             onInit={(_evt, editor) => editorRef.current = editor}
             value={value}
             onEditorChange={(content) => onChange(content)}
-            apiKey='yi6822q08nfedfmuxw6t66356c1ejw2bi9akkoa8juhnaq66'
+            apiKey={config.TINYMCE_API_KEY}
             init={{
                 height,
                 menubar: false,

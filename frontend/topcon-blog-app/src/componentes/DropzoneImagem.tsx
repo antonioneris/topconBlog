@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react';
 import { Card, Button, Image, Alert, Spinner } from 'react-bootstrap';
 import { imagemServico } from '../servicos/api';
+import { getAssetUrl } from '../config/env';
 
 interface DropzoneImagemProps {
     imagemUrl?: string | null;
@@ -89,7 +90,7 @@ export default function DropzoneImagem({ imagemUrl, onImagemChange }: DropzoneIm
                 <Card className="border">
                     <div className="position-relative">
                         <Image
-                            src={`http://localhost:8080${imagemUrl}`}
+                            src={getAssetUrl(imagemUrl)}
                             alt="Imagem de capa"
                             fluid
                             className="rounded-top"
