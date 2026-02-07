@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useRef, useCallback } from 'react';
 import { ProvedorAutenticacao, useAutenticacao } from './contextos/AutenticacaoContexto';
 import RotaProtegida from './componentes/RotaProtegida';
 import BarraNavegacao from './componentes/BarraNavegacao';
@@ -6,12 +7,35 @@ import PaginaLogin from './paginas/PaginaLogin';
 import PaginaRegistro from './paginas/PaginaRegistro';
 import PaginaFeed from './paginas/PaginaFeed';
 import PaginaUsuarios from './paginas/PaginaUsuarios';
+import type { PostagemDto } from './servicos/api';
 
 // Importar Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-// Layout com navegação
+// Layout com navegação para o Feed
+function LayoutFeed() {
+  const adicionarPostagemRef = useRef<((postagem: PostagemDto) => void) | null>(null);
+
+  const handleNovaPostagem = useCallback((postagem: PostagemDto) => {
+    adicionarPostagemRef.current?.(postagem);
+  }, []);
+
+  const setAdicionarPostagem = useCallback((fn: (postagem: PostagemDto) => void) => {
+    adicionarPostagemRef.current = fn;
+  }, []);
+
+  return (
+    <>
+      <BarraNavegacao onNovaPostagem={handleNovaPostagem} />
+      <main>
+        <PaginaFeed onRegistrarCallback={setAdicionarPostagem} />
+      </main>
+    </>
+  );
+}
+
+// Layout genérico com navegação (para outras páginas)
 function LayoutComNavegacao({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -52,14 +76,12 @@ function AppRotas() {
         }
       />
 
-      {/* Rotas protegidas */}
+      {/* Feed com integração de nova postagem */}
       <Route
         path="/"
         element={
           <RotaProtegida>
-            <LayoutComNavegacao>
-              <PaginaFeed />
-            </LayoutComNavegacao>
+            <LayoutFeed />
           </RotaProtegida>
         }
       />
