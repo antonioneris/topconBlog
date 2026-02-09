@@ -59,8 +59,7 @@ export default function EditorHtml({ value, onChange, height = 300, placeholder 
                 ],
                 toolbar: 'undo redo | blocks | ' +
                     'bold italic forecolor | alignleft aligncenter ' +
-                    'alignright alignjustify | bullist numlist outdent indent | ' +
-                    'image link | removeformat | help',
+                    'alignright alignjustify |',
                 content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; font-size: 14px; } img { max-width: 100%; height: auto; }',
                 placeholder,
                 language: 'pt-BR',

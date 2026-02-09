@@ -179,9 +179,9 @@ export default function PaginaMinhasPostagens() {
                                                             </td>
                                                             <td className="text-end pe-4">
                                                                 <Button
-                                                                    variant="info"
+                                                                    variant="outline-secondary"
                                                                     //size="" 
-                                                                    className="me-1 text-white"
+                                                                    className="me-1"
                                                                     onClick={() => abrirVisualizacao(postagem)}
                                                                 >
                                                                     <i className="bi bi-eye"></i>
