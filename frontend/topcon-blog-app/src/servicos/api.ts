@@ -1,11 +1,12 @@
 import axios from 'axios';
+import { config } from '../config/env';
 
 // Criação da instância do Axios com configurações base
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: config.API_URL,
   headers: {
     'Content-Type': 'application/json',
-  },
+  },  
 });
 
 // Interceptor para adicionar o token JWT em todas as requisições
@@ -94,6 +95,7 @@ export interface PostagemDto {
   id: number;
   titulo: string;
   conteudo: string;
+  imagemCapaUrl?: string;
   autorId: number;
   autorNome: string;
   dataCriacao: string;
@@ -103,6 +105,7 @@ export interface PostagemDto {
 export interface CriarPostagemDto {
   titulo: string;
   conteudo: string;
+  imagemCapaUrl?: string;
 }
 
 export interface PostagensPaginadas {
@@ -114,9 +117,9 @@ export interface PostagensPaginadas {
 }
 
 export const postagemServico = {
-  listar: async (pagina = 1, tamanho = 10): Promise<PostagensPaginadas> => {
+  listar: async (pagina = 1, tamanho = 10, termo?: string, autorId?: number): Promise<PostagensPaginadas> => {
     const response = await api.get<PostagensPaginadas>('/postagens', {
-      params: { pagina, tamanho },
+      params: { pagina, tamanho, termo, autorId },
     });
     return response.data;
   },
@@ -138,6 +141,30 @@ export const postagemServico = {
 
   remover: async (id: number): Promise<void> => {
     await api.delete(`/postagens/${id}`);
+  },
+};
+
+// =============================================================================
+// Serviço de Upload de Imagens
+// =============================================================================
+
+export interface ImagemUploadResult {
+  sucesso: boolean;
+  mensagem?: string;
+  url?: string;
+  nomeArquivo?: string;
+}
+
+export const imagemServico = {
+  upload: async (arquivo: File): Promise<ImagemUploadResult> => {
+    const formData = new FormData();
+    formData.append('arquivo', arquivo);
+    const response = await api.post<ImagemUploadResult>('/imagens/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    return response.data;
   },
 };
 

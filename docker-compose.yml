@@ -7,8 +7,8 @@ services:
       POSTGRES_DB: topconblog
       POSTGRES_USER: topcon
       POSTGRES_PASSWORD: topcon@2024
-    # ports:
-    #   - "5432:5432"
+    ports:
+      - "5432:5432"
     volumes:
       - postgres-dados:/var/lib/postgresql/data
     networks:
@@ -28,12 +28,15 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:5000
+      UploadsPath: /app/wwwroot/uploads
       # ConnectionStrings__DefaultConnection: "Host=database;Port=5432;Database=topconblog;Username=topcon;Password=topcon@2024"
       # JWT__SecretKey: "TesteVagadeEmprego2026!@#123@@#######"
       # JWT__Issuer: "TopconBlogAPI"
       # JWT__Audience: "TopconBlogApp"
     ports:
       - "8080:5000"
+    volumes:
+      - uploads-data:/app/wwwroot/uploads
     depends_on:
       database:
         condition: service_healthy
@@ -59,3 +62,4 @@ networks:
 
 volumes:
   postgres-dados:
+  uploads-data:

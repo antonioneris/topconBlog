@@ -25,6 +25,7 @@ builder.Services.AddScoped<IGrupoRepositorio, GrupoRepositorio>();
 builder.Services.AddScoped<IAutenticacaoServico, AutenticacaoServico>();
 builder.Services.AddScoped<IPostagemServico, PostagemServico>();
 builder.Services.AddScoped<IUsuarioServico, UsuarioServico>();
+builder.Services.AddScoped<IImagemServico, ImagemServico>();
 
 
 //Autenticação JWT
@@ -126,6 +127,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("PermitirFrontend");
+
+app.UseStaticFiles();
 
 app.UseAuthentication();
 app.UseAuthorization();

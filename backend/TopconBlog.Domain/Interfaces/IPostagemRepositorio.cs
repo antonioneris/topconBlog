@@ -7,6 +7,6 @@ namespace TopconBlog.Domain.Interfaces
         Task<IEnumerable<Postagem>> ObterTodasOrdenadasAsync();
         Task<IEnumerable<Postagem>> ObterPorAutorAsync(int autorId);
         Task<Postagem?> ObterComAutorAsync(int id);
-        Task<(IEnumerable<Postagem> Postagens, int Total)> ObterPaginadoAsync(int pagina, int tamanhoPagina);
+        Task<(IEnumerable<Postagem> Postagens, int Total)> ObterPaginadoAsync(int pagina, int tamanhoPagina, string? termo = null, int? autorId = null);
     }
 }

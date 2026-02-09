@@ -1,8 +1,3 @@
-// =============================================================================
-// Controller de Postagens - CRUD de posts do blog
-// Projeto: TopconBlog.API
-// =============================================================================
-
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,13 +26,15 @@ namespace TopconBlog.API.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> Listar([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10)
+        [AllowAnonymous]
+        public async Task<IActionResult> Listar([FromQuery] int pagina = 1, [FromQuery] int tamanho = 10, [FromQuery] string? termo = null, [FromQuery] int? autorId = null)
         {
-            var resultado = await _postagemServico.ObterTodasAsync(pagina, tamanho);
+            var resultado = await _postagemServico.ObterTodasAsync(pagina, tamanho, termo, autorId);
             return Ok(resultado);
         }
         
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> ObterPorId(int id)
         {
             var postagem = await _postagemServico.ObterPorIdAsync(id);

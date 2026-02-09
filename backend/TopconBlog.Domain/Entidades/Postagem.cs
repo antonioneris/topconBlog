@@ -8,6 +8,7 @@ namespace TopconBlog.Domain.Entidades
         public int AutorId { get; set; }
         public DateTime DataCriacao { get; set; } = DateTime.UtcNow;
         public DateTime? DataAtualizacao { get; set; }
+        public string? ImagemCapaUrl { get; set; }
         public virtual Usuario? Autor { get; set; }
     }
 }

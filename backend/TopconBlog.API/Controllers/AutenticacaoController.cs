@@ -1,8 +1,3 @@
-// =============================================================================
-// Controller de Autenticação - Login e Registro
-// Projeto: TopconBlog.API
-// =============================================================================
-
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TopconBlog.Application.DTOs;
