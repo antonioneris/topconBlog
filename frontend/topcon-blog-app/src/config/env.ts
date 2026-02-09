@@ -34,8 +34,8 @@ function getEnvVar(key: string, defaultValue?: string): string {
 }
 
 export const config: AppConfig = {
-    API_BASE_URL: getEnvVar('VITE_API_BASE_URL', 'http://localhost:8080'),
-    API_URL: `${getEnvVar('VITE_API_BASE_URL', 'http://localhost:8080')}/api`,
+    API_BASE_URL: getEnvVar('VITE_API_BASE_URL', ''),
+    API_URL: `${getEnvVar('VITE_API_BASE_URL', '')}/api`,
     TINYMCE_API_KEY: getEnvVar('VITE_TINYMCE_API_KEY', ''),
     IS_PRODUCTION: import.meta.env.PROD,
 };
