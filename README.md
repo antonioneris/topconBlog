@@ -1,7 +1,7 @@
 
 ## 🚀 Como Executar
 
-### Opção 1: Docker Compose (Recomendado)
+### Opção 1: Docker Compose 
 
 ```bash
 # Na raiz do projeto

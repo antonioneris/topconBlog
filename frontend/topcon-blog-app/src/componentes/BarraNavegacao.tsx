@@ -97,7 +97,7 @@ export default function BarraNavegacao({ onNovaPostagem }: BarraNavegacaoProps) 
                                 <>
                                     <Link
                                         to="/login"
-                                        className="btn btn-outline-primary me-2"
+                                        className="btn btn-outline-secondary me-2"
                                     >
                                         Login
                                     </Link>
