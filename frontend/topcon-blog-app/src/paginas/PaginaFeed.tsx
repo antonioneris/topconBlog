@@ -253,7 +253,7 @@ export default function PaginaFeed({ onRegistrarCallback }: PaginaFeedProps) {
                                             </p>
 
                                             {/* Indicador de "ver mais" */}
-                                            <small className="text-primary mt-2 d-inline-block">
+                                            <small className="text-black mt-2 d-inline-block">
                                                 <i className="bi bi-eye me-1"></i>
                                                 Clique para ler mais
                                             </small>
