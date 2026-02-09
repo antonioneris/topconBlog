@@ -39,14 +39,27 @@ export default function PaginaFeed({ onRegistrarCallback }: PaginaFeedProps) {
     // Configuração do preview
     const PREVIEW_MAX_LENGTH = 200;
 
+    const [termoBusca, setTermoBusca] = useState('');
+    const [termoDebounce, setTermoDebounce] = useState('');
+
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            setTermoDebounce(termoBusca);
+        }, 500);
+
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [termoBusca]);
+
     useEffect(() => {
         carregarPostagens();
-    }, []);
+    }, [termoDebounce]); // Recarrega quando termoDebounce muda
 
     const carregarPostagens = async () => {
         try {
             setCarregando(true);
-            const dados = await postagemServico.listar(1, 20);
+            const dados = await postagemServico.listar(1, 20, termoDebounce);
             setPostagens(dados.postagens);
             setTemMais(dados.pagina < dados.totalPaginas);
             setPagina(1);
@@ -60,7 +73,7 @@ export default function PaginaFeed({ onRegistrarCallback }: PaginaFeedProps) {
     const carregarMais = async () => {
         try {
             const proximaPagina = pagina + 1;
-            const dados = await postagemServico.listar(proximaPagina, 20);
+            const dados = await postagemServico.listar(proximaPagina, 20, termoDebounce);
             setPostagens([...postagens, ...dados.postagens]);
             setTemMais(dados.pagina < dados.totalPaginas);
             setPagina(proximaPagina);
@@ -154,6 +167,17 @@ export default function PaginaFeed({ onRegistrarCallback }: PaginaFeedProps) {
                 <Row className="justify-content-center m-0">
                     <Col xs={12} sm={12} md={10} lg={8} xl={7} xxl={6} className="px-0 px-sm-2">
                         {erro && <Alert variant="danger" dismissible onClose={() => setErro('')}>{erro}</Alert>}
+
+                        {/* Barra de Pesquisa */}
+                        <div className="mb-4">
+                            <Form.Control
+                                type="search"
+                                placeholder="Pesquisar postagens..."
+                                value={termoBusca}
+                                onChange={(e) => setTermoBusca(e.target.value)}
+                                className="shadow-sm border-0 p-3"
+                            />
+                        </div>
 
                         {/* Lista de postagens */}
                         {carregando ? (

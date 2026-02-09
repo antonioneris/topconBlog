@@ -1,4 +1,5 @@
-import { Modal, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import Modal from './Modal';
 import type { ReactNode } from 'react';
 
 interface ModalConfirmacaoProps {
@@ -25,23 +26,25 @@ export function ModalConfirmacao({
     apenasMensagem = false
 }: ModalConfirmacaoProps) {
     return (
-        <Modal show={show} onHide={onHide} centered>
-            <Modal.Header closeButton>
-                <Modal.Title>{titulo}</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                {children}
-            </Modal.Body>
-            <Modal.Footer>
-                {!apenasMensagem && (
-                    <Button variant="secondary" onClick={onHide}>
-                        {textoCancelar}
+        <Modal
+            show={show}
+            onHide={onHide}
+            titulo={titulo}
+            size="sm"
+            footer={
+                <>
+                    {!apenasMensagem && (
+                        <Button variant="secondary" onClick={onHide}>
+                            {textoCancelar}
+                        </Button>
+                    )}
+                    <Button variant={variante} onClick={onConfirm || onHide}>
+                        {textoConfirmar}
                     </Button>
-                )}
-                <Button variant={variante} onClick={onConfirm || onHide}>
-                    {textoConfirmar}
-                </Button>
-            </Modal.Footer>
+                </>
+            }
+        >
+            {children}
         </Modal>
     );
 }

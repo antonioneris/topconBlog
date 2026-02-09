@@ -14,9 +14,9 @@ namespace TopconBlog.Application.Servicos
             _postagemRepositorio = postagemRepositorio;
         }
         
-        public async Task<PostagensPaginadasDto> ObterTodasAsync(int pagina = 1, int tamanhoPagina = 10)
+        public async Task<PostagensPaginadasDto> ObterTodasAsync(int pagina = 1, int tamanhoPagina = 10, string? termo = null, int? autorId = null)
         {
-            var (postagens, total) = await _postagemRepositorio.ObterPaginadoAsync(pagina, tamanhoPagina);
+            var (postagens, total) = await _postagemRepositorio.ObterPaginadoAsync(pagina, tamanhoPagina, termo, autorId);
             
             return new PostagensPaginadasDto
             {

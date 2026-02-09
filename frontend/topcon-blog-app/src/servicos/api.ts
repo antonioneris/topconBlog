@@ -6,7 +6,7 @@ const api = axios.create({
   baseURL: config.API_URL,
   headers: {
     'Content-Type': 'application/json',
-  },
+  },  
 });
 
 // Interceptor para adicionar o token JWT em todas as requisições
@@ -117,9 +117,9 @@ export interface PostagensPaginadas {
 }
 
 export const postagemServico = {
-  listar: async (pagina = 1, tamanho = 10): Promise<PostagensPaginadas> => {
+  listar: async (pagina = 1, tamanho = 10, termo?: string, autorId?: number): Promise<PostagensPaginadas> => {
     const response = await api.get<PostagensPaginadas>('/postagens', {
-      params: { pagina, tamanho },
+      params: { pagina, tamanho, termo, autorId },
     });
     return response.data;
   },

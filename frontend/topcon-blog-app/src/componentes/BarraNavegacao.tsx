@@ -34,9 +34,9 @@ export default function BarraNavegacao({ onNovaPostagem }: BarraNavegacaoProps) 
             <Navbar bg="white" expand="lg" className="shadow-sm sticky-top">
                 <Container fluid className="px-3 px-md-4 px-lg-5">
                     {/* Logo */}
-                    <Navbar.Brand as={Link} to="/" className="fw-bold text-primary fs-5">
+                    <Link to="/" className="navbar-brand fw-bold text-primary fs-5">
                         <img src="/topconlogo.png" alt="Logo Topcon Blog" className="img-fluid" width={150} />
-                    </Navbar.Brand>
+                    </Link>
 
                     {/* Toggle para mobile/tablet */}
                     <Navbar.Toggle aria-controls="navbar-nav" className="border-0" />
@@ -44,46 +44,71 @@ export default function BarraNavegacao({ onNovaPostagem }: BarraNavegacaoProps) 
                     {/* Menu colapsável */}
                     <Navbar.Collapse id="navbar-nav">
                         {/* Links de navegação */}
+                        {/* Links de navegação */}
                         <Nav className="me-auto">
-                            <Nav.Link as={Link} to="/" className="fw-medium px-3 py-2">
-                                Feed
-                            </Nav.Link>
+                            <Link to="/" className="nav-link fw-medium px-3 py-2">
+                                Blog
+                            </Link>
+                            {usuario && (
+                                <Link to="/minhas-postagens" className="nav-link fw-medium px-3 py-2">
+                                    Gerenciar Postagens
+                                </Link>
+                            )}
                             {isAdmin && (
-                                <Nav.Link as={Link} to="/usuarios" className="fw-medium px-3 py-2">
-                                    Usuários
-                                </Nav.Link>
+                                <Link to="/usuarios" className="nav-link fw-medium px-3 py-2">
+                                    Gerenciar Usuários
+                                </Link>
                             )}
                         </Nav>
 
                         {/* Área do usuário */}
                         <Nav className="align-items-lg-center gap-2">
-                            {/* Botão Nova Publicação */}
-                            {mostrarBotaoNova && (
-                                <Button
-                                    variant="primary"
-                                    onClick={() => setMostrarModalNova(true)}
-                                    className="my-2 my-lg-0"
-                                >
-                                    <i className="bi bi-plus-lg me-2"></i>
-                                    Nova Publicação
-                                </Button>
-                            )}
+                            {usuario ? (
+                                <>
+                                    {/* Botão Nova Publicação */}
+                                    {mostrarBotaoNova && (
+                                        <Button
+                                            variant="primary"
+                                            onClick={() => setMostrarModalNova(true)}
+                                            className="my-2 my-lg-0"
+                                        >
+                                            <i className="bi bi-plus-lg me-2"></i>
+                                            Nova Publicação
+                                        </Button>
+                                    )}
 
-                            <div className="d-flex align-items-center py-2 py-lg-0 me-lg-2">
-                                <span className="text-muted me-1 d-none d-md-inline">Olá,</span>
-                                <span className="fw-semibold">{usuario?.nome}</span>
-                                {isAdmin && (
-                                    <Badge bg="danger" className="ms-2">Admin</Badge>
-                                )}
-                            </div>
-                            <Button
-                                variant="outline-secondary"
-                                size="sm"
-                                onClick={handleLogout}
-                                className="my-2 my-lg-0"
-                            >
-                                Sair
-                            </Button>
+                                    <div className="d-flex align-items-center py-2 py-lg-0 me-lg-2">
+                                        <span className="text-muted me-1 d-none d-md-inline">Olá,</span>
+                                        <span className="fw-semibold">{usuario.nome}</span>
+                                        {isAdmin && (
+                                            <Badge bg="danger" className="ms-2">Admin</Badge>
+                                        )}
+                                    </div>
+                                    <Button
+                                        variant="outline-secondary"
+                                        size="sm"
+                                        onClick={handleLogout}
+                                        className="my-2 my-lg-0"
+                                    >
+                                        Sair
+                                    </Button>
+                                </>
+                            ) : (
+                                <>
+                                    <Link
+                                        to="/login"
+                                        className="btn btn-outline-primary me-2"
+                                    >
+                                        Login
+                                    </Link>
+                                    <Link
+                                        to="/registro"
+                                        className="btn btn-primary"
+                                    >
+                                        Registrar
+                                    </Link>
+                                </>
+                            )}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

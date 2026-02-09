@@ -7,6 +7,7 @@ import PaginaLogin from './paginas/PaginaLogin';
 import PaginaRegistro from './paginas/PaginaRegistro';
 import PaginaFeed from './paginas/PaginaFeed';
 import PaginaUsuarios from './paginas/PaginaUsuarios';
+import PaginaMinhasPostagens from './paginas/PaginaMinhasPostagens';
 import type { PostagemDto } from './servicos/api';
 
 // Importar Bootstrap CSS
@@ -76,12 +77,22 @@ function AppRotas() {
         }
       />
 
-      {/* Feed com integração de nova postagem */}
+      {/* Feed público */}
       <Route
         path="/"
         element={
+          <LayoutFeed />
+        }
+      />
+
+      {/* Minhas Postagens (protegido) */}
+      <Route
+        path="/minhas-postagens"
+        element={
           <RotaProtegida>
-            <LayoutFeed />
+            <LayoutComNavegacao>
+              <PaginaMinhasPostagens />
+            </LayoutComNavegacao>
           </RotaProtegida>
         }
       />
