@@ -37,21 +37,6 @@ services:
     networks:
       - topcon-rede
       - traefik
-    # labels:
-    #   - "traefik.enable=true"
-    #   - "traefik.docker.network=traefik"
-    #   # HTTP Router
-    #   - "traefik.http.routers.topcon-api.rule=Host(`api.blogtopcon.ddns.net`)"
-    #   - "traefik.http.routers.topcon-api.entrypoints=web"
-    #   - "traefik.http.services.topcon-api.loadbalancer.server.port=5000"
-    #   # Redirect HTTP to HTTPS
-    #   - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-    #   - "traefik.http.routers.topcon-api.middlewares=redirect-to-https@docker"
-    #   # HTTPS Router
-    #   - "traefik.http.routers.topcon-api-secured.rule=Host(`api.blogtopcon.ddns.net`)"
-    #   - "traefik.http.routers.topcon-api-secured.entrypoints=web-secure"
-    #   - "traefik.http.routers.topcon-api-secured.tls=true"
-    #   - "traefik.http.routers.topcon-api-secured.tls.certresolver=myhttpchallenge"
 
   frontend:
     build:

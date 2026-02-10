@@ -4,8 +4,6 @@ Eu tomei a liberdade de fazer um deplopy para ao acesso de demostracao com tudo 
 Acesse:
 
 Frontend: https://blogtopcon.ddns.net/
-API:      https://blogtopcon.ddns.net/api - Consumir API
-Swagger:  https://blogtopcon.ddns.net/swagger - Documentação da API
 
 
 
