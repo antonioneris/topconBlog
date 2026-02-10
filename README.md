@@ -1,3 +1,13 @@
+## Acesso demo
+Eu tomei a liberdade de fazer um deplopy para ao acesso de demostracao com tudo funionando.
+
+Acesse:
+
+Frontend: https://blogtopcon.ddns.net/
+
+
+
+
 
 ## 🚀 Como Executar
 
@@ -9,8 +19,8 @@ docker compose up -d
 
 # Acesse:
 # Frontend: http://localhost
-# API:      http://localhost:8080
-# Swagger:  http://localhost:8080/swagger
+# API:      http://localhost/api - Consumir API
+# Swagger:  http://localhost/swagger - Documentação da API
 ```
 
 ### Opção 2: Desenvolvimento Local
@@ -36,3 +46,13 @@ npm run dev
 Email: `admin@topcon.com`
 Senha: `admin123`
 
+## Usuários
+
+Email: `joao@topcon.com`
+Senha: `user123`
+
+Email: `cleber@topcon.com`
+Senha: `user123`
+
+Email: `luna@topcon.com`
+Senha: `user123`
