@@ -40,6 +40,11 @@ namespace TopconBlog.Application.Servicos
         
         public async Task<UsuarioDto> CriarAsync(CriarUsuarioDto dto)
         {
+            if (await _usuarioRepositorio.EmailExisteAsync(dto.Email))
+            {
+                throw new InvalidOperationException("Já existe um usuário com este email.");
+            }
+
             var novoUsuario = new Usuario
             {
                 Nome = dto.Nome,

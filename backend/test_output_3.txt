@@ -1,0 +1,107 @@
+  Determinando os projetos a serem restaurados...
+/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj : warning NU1608: Versão detectada do pacote fora da restrição de dependência: Npgsql.EntityFrameworkCore.PostgreSQL 9.0.3 requer Microsoft.EntityFrameworkCore (>= 9.0.1 && < 10.0.0), mas a versão Microsoft.EntityFrameworkCore 10.0.2 foi resolvida.
+  Todos os projetos estão atualizados para restauração.
+/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj : warning NU1608: Versão detectada do pacote fora da restrição de dependência: Npgsql.EntityFrameworkCore.PostgreSQL 9.0.3 requer Microsoft.EntityFrameworkCore (>= 9.0.1 && < 10.0.0), mas a versão Microsoft.EntityFrameworkCore 10.0.2 foi resolvida.
+  TopconBlog.Domain -> /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.Domain/bin/Debug/net9.0/TopconBlog.Domain.dll
+  TopconBlog.Application -> /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.Application/bin/Debug/net9.0/TopconBlog.Application.dll
+  TopconBlog.Infrastructure -> /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.Infrastructure/bin/Debug/net9.0/TopconBlog.Infrastructure.dll
+  TopconBlog.API -> /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.API/bin/Debug/net9.0/TopconBlog.API.dll
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277: foram encontrados conflitos entre diferentes versões do "Microsoft.EntityFrameworkCore.Relational" que não puderam ser resolvidas. [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277: Há um conflito entre "Microsoft.EntityFrameworkCore.Relational, Version=9.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" e "Microsoft.EntityFrameworkCore.Relational, Version=9.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60". [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:     "Microsoft.EntityFrameworkCore.Relational, Version=9.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" foi escolhido porque era principal e "Microsoft.EntityFrameworkCore.Relational, Version=9.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" não era. [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:     As referências dependerão de "Microsoft.EntityFrameworkCore.Relational, Version=9.0.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" [/Users/antonioneris/.nuget/packages/microsoft.entityframeworkcore.relational/9.0.1/lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll]. [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:         /Users/antonioneris/.nuget/packages/microsoft.entityframeworkcore.relational/9.0.1/lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:           Inclusões de itens do arquivo de projeto que geraram a referência"/Users/antonioneris/.nuget/packages/microsoft.entityframeworkcore.relational/9.0.1/lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll". [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:             /Users/antonioneris/.nuget/packages/microsoft.entityframeworkcore.relational/9.0.1/lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:     Referências que dependem de ou foram unificadas para "Microsoft.EntityFrameworkCore.Relational, Version=9.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" []. [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:         /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.API/bin/Debug/net9.0/TopconBlog.API.dll [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:           Inclusões de itens do arquivo de projeto que geraram a referência"/Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.API/bin/Debug/net9.0/TopconBlog.API.dll". [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:             /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.API/bin/Debug/net9.0/TopconBlog.API.dll [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:         /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.Infrastructure/bin/Debug/net9.0/TopconBlog.Infrastructure.dll [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:           Inclusões de itens do arquivo de projeto que geraram a referência"/Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.Infrastructure/bin/Debug/net9.0/TopconBlog.Infrastructure.dll". [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:             /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.Infrastructure/bin/Debug/net9.0/TopconBlog.Infrastructure.dll [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+/usr/local/share/dotnet/sdk/10.0.102/Microsoft.Common.CurrentVersion.targets(2437,5): warning MSB3277:             /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.API/bin/Debug/net9.0/TopconBlog.API.dll [/Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj]
+  TopconBlog.API.IntegrationTests -> /Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/bin/Debug/net10.0/TopconBlog.API.IntegrationTests.dll
+Execução de teste para /Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/bin/Debug/net10.0/TopconBlog.API.IntegrationTests.dll (.NETCoreApp,Version=v10.0)
+Versão do VSTest 18.0.1 (arm64)
+
+Iniciando execução de teste, espere...
+1 arquivos de teste no total corresponderam ao padrão especificado.
+[xUnit.net 00:00:00.39]     TopconBlog.API.IntegrationTests.IntegrationTests.Post_Login_ComCredenciaisInvalidas_DeveRetornarUnauthorized [FAIL]
+  Com falha TopconBlog.API.IntegrationTests.IntegrationTests.Post_Login_ComCredenciaisInvalidas_DeveRetornarUnauthorized [324 ms]
+  Mensagem de erro:
+   Expected response.StatusCode to be HttpStatusCode.Unauthorized {value: 401} because Expected 401 but got InternalServerError. Body: System.MissingMethodException: Method not found: 'System.String Microsoft.EntityFrameworkCore.Diagnostics.AbstractionsStrings.ArgumentIsEmpty(System.Object)'.
+   at Microsoft.EntityFrameworkCore.Utilities.Check.NullButNotEmpty(String value, String parameterName)
+   at Microsoft.EntityFrameworkCore.RelationalEntityTypeBuilderExtensions.ToTable(EntityTypeBuilder entityTypeBuilder, String name)
+   at Microsoft.EntityFrameworkCore.RelationalEntityTypeBuilderExtensions.ToTable[TEntity](EntityTypeBuilder`1 entityTypeBuilder, String name)
+   at TopconBlog.Infrastructure.Dados.BlogDbContext.<>c.<OnModelCreating>b__13_0(EntityTypeBuilder`1 entity) in /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.Infrastructure/Dados/BlogDbContext.cs:line 25
+   at Microsoft.EntityFrameworkCore.ModelBuilder.Entity[TEntity](Action`1 buildAction)
+   at TopconBlog.Infrastructure.Dados.BlogDbContext.OnModelCreating(ModelBuilder modelBuilder) in /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.Infrastructure/Dados/BlogDbContext.cs:line 23
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelCustomizer.Customize(ModelBuilder modelBuilder, DbContext context)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, IConventionSetBuilder conventionSetBuilder, ModelDependencies modelDependencies)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.CreateModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Infrastructure.ModelSource.GetModel(DbContext context, ModelCreationDependencies modelCreationDependencies, Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.CreateModel(Boolean designTime)
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.get_Model()
+   at Microsoft.EntityFrameworkCore.Infrastructure.EntityFrameworkServicesBuilder.<>c.<TryAddCoreServices>b__8_4(IServiceProvider p)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()
+   at Microsoft.EntityFrameworkCore.DbContext.get_DbContextDependencies()
+   at Microsoft.EntityFrameworkCore.DbContext.Set[TEntity]()
+   at TopconBlog.Infrastructure.Repositorios.Repositorio`1..ctor(BlogDbContext contexto) in /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.Infrastructure/Repositorios/Repositorio.cs:line 17
+   at TopconBlog.Infrastructure.Repositorios.UsuarioRepositorio..ctor(BlogDbContext contexto) in /Users/antonioneris/LocalProjects/topconBlog/backend/TopconBlog.Infrastructure/Repositorios/UsuarioRepositorio.cs:line 14
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Constructor(Object obj, IntPtr* args)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at System.Reflection.RuntimeConstructorInfo.Invoke(BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitConstructor(ConstructorCallSite constructorCallSite, RuntimeResolverContext context)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteRuntimeResolver.VisitCache(ServiceCallSite callSite, RuntimeResolverContext context, ServiceProviderEngineScope serviceProviderEngine, RuntimeResolverLock lockType)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.DynamicServiceProviderEngine.<>c__DisplayClass2_0.<RealizeService>b__0(ServiceProviderEngineScope scope)
+   at lambda_method31(Closure, IServiceProvider, Object[])
+   at Microsoft.AspNetCore.Mvc.Controllers.ControllerFactoryProvider.<>c__DisplayClass6_0.<CreateControllerFactory>g__CreateController|0(ControllerContext controllerContext)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+
+HEADERS
+=======
+Content-Type: application/json; charset=utf-8
+Content-Length: 46
+Host: localhost
+, but found HttpStatusCode.InternalServerError {value: 500}.
+  Rastreamento de pilha:
+     at FluentAssertions.Execution.LateBoundTestFramework.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.AddPreFormattedFailure(String formattedFailureMessage)
+   at FluentAssertions.Execution.AssertionChain.FailWith(Func`1 getFailureReason)
+   at FluentAssertions.Execution.AssertionChain.FailWith(Func`1 getFailureReason)
+   at FluentAssertions.Execution.AssertionChain.FailWith(String message, Object[] args)
+   at FluentAssertions.Primitives.EnumAssertions`2.Be(TEnum expected, String because, Object[] becauseArgs)
+   at TopconBlog.API.IntegrationTests.IntegrationTests.Post_Login_ComCredenciaisInvalidas_DeveRetornarUnauthorized() in /Users/antonioneris/LocalProjects/topconBlog/backend/tests/TopconBlog.API.IntegrationTests/IntegrationTests.cs:line 48
+--- End of stack trace from previous location ---
+
+Com falha! – Com falha:     1, Aprovado:     1, Ignorado:     0, Total:     2, Duração: 333 ms - TopconBlog.API.IntegrationTests.dll (net10.0)
