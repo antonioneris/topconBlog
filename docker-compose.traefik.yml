@@ -1,0 +1,91 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres:15-alpine
+    container_name: topcon-blog-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: topconblog
+      POSTGRES_USER: topcon
+      POSTGRES_PASSWORD: topcon@2024
+    volumes:
+      - postgres-dados:/var/lib/postgresql/data
+    networks:
+      - topcon-rede
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U topcon -d topconblog"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: topcon-blog-api
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:5000
+      UploadsPath: /app/wwwroot/uploads
+    volumes:
+      - uploads-data:/app/wwwroot/uploads
+    depends_on:
+      database:
+        condition: service_healthy
+    networks:
+      - topcon-rede
+      - traefik
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.docker.network=traefik"
+    #   # HTTP Router
+    #   - "traefik.http.routers.topcon-api.rule=Host(`api.blogtopcon.ddns.net`)"
+    #   - "traefik.http.routers.topcon-api.entrypoints=web"
+    #   - "traefik.http.services.topcon-api.loadbalancer.server.port=5000"
+    #   # Redirect HTTP to HTTPS
+    #   - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+    #   - "traefik.http.routers.topcon-api.middlewares=redirect-to-https@docker"
+    #   # HTTPS Router
+    #   - "traefik.http.routers.topcon-api-secured.rule=Host(`api.blogtopcon.ddns.net`)"
+    #   - "traefik.http.routers.topcon-api-secured.entrypoints=web-secure"
+    #   - "traefik.http.routers.topcon-api-secured.tls=true"
+    #   - "traefik.http.routers.topcon-api-secured.tls.certresolver=myhttpchallenge"
+
+  frontend:
+    build:
+      context: ./frontend/topcon-blog-app
+      dockerfile: Dockerfile
+    container_name: topcon-blog-frontend
+    restart: unless-stopped
+    depends_on:
+      - api
+    networks:
+      - topcon-rede
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik"
+      # HTTP Router
+      - "traefik.http.routers.topcon-frontend.rule=Host(`blogtopcon.ddns.net`)"
+      - "traefik.http.routers.topcon-frontend.entrypoints=web"
+      - "traefik.http.services.topcon-frontend.loadbalancer.server.port=80"
+      # Redirect HTTP to HTTPS
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.topcon-frontend.middlewares=redirect-to-https@docker"
+      # HTTPS Router
+      - "traefik.http.routers.topcon-frontend-secured.rule=Host(`blogtopcon.ddns.net`)"
+      - "traefik.http.routers.topcon-frontend-secured.entrypoints=web-secure"
+      - "traefik.http.routers.topcon-frontend-secured.tls=true"
+      - "traefik.http.routers.topcon-frontend-secured.tls.certresolver=myhttpchallenge"
+
+networks:
+  topcon-rede:
+    driver: bridge
+  traefik:
+    external: true
+
+volumes:
+  postgres-dados:
+  uploads-data:
