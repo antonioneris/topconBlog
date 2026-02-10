@@ -47,7 +47,6 @@ packages/
 # Logs
 *.log
 
-backend/TopconBlog.API/wwwroot/uploads/*
 
 # -----------------------------------------------------------------------------
 # Frontend Node.js / React
