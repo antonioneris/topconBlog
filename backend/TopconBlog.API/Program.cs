@@ -13,8 +13,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<BlogDbContext>(options =>
-    options.UseNpgsql(connectionString));
+
+if (Environment.GetEnvironmentVariable("TEST_MODE") != "true")
+{
+    builder.Services.AddDbContext<BlogDbContext>(options =>
+        options.UseNpgsql(connectionString));
+}
 
 
 builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
@@ -110,11 +114,14 @@ var app = builder.Build();
 
 
 // Migrations
-using (var scope = app.Services.CreateScope())
+if (Environment.GetEnvironmentVariable("TEST_MODE") != "true")
 {
-    var db = scope.ServiceProvider.GetRequiredService<BlogDbContext>();
-    db.Database.Migrate();
-    DbInitializer.Initialize(db);
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<BlogDbContext>();
+        db.Database.Migrate();
+        DbInitializer.Initialize(db);
+    }
 }
 
 
@@ -137,3 +144,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

@@ -1,4 +1,9 @@
 <Solution>
+  <Folder Name="/tests/">
+    <Project Path="tests/TopconBlog.API.IntegrationTests/TopconBlog.API.IntegrationTests.csproj" />
+    <Project Path="tests/TopconBlog.Application.Tests/TopconBlog.Application.Tests.csproj" />
+    <Project Path="tests/TopconBlog.Domain.Tests/TopconBlog.Domain.Tests.csproj" />
+  </Folder>
   <Project Path="TopconBlog.API/TopconBlog.API.csproj" />
   <Project Path="TopconBlog.Application/TopconBlog.Application.csproj" />
   <Project Path="TopconBlog.Domain/TopconBlog.Domain.csproj" />
